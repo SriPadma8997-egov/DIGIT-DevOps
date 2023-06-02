@@ -1,5 +1,5 @@
 global:
-   domain: <domain_name> ## Add your Domain Name "Eg: site.mydomain.com" Do not use the dummy domain
+   domain: mishra-demo.digit.org ## Add your Domain Name "Eg: site.mydomain.com" Do not use the dummy domain
    setup: fullsetup
 
 cluster-configs:
@@ -13,11 +13,11 @@ cluster-configs:
         egov-config:
             namespace: [ egov, monitoring ]
             data:
-                db-host: <db_host_name> ## Add db-host name eg: egov-demo.database.azure.com
-                db-name: <db_name> ## Add db-name
-                db-url: jdbc:postgresql://<db_host_name>/<db_name> ## example: jdbc:postgresql://egov-demo.postgres.database.azure.com:5432/egov_demo
-                domain: <domain_name> ## Add your Domain Name    
-                egov-services-fqdn-name: https://<domain_name>/ ## Add your Domain Name
+                db-host: mishra-demo-db.czvokiourya9.ap-south-1.rds.amazonaws.com:5432 ## Add db-host name eg: egov-demo.database.azure.com
+                db-name: mishrademo ## Add db-name
+                db-url: jdbc:postgresql://mishra-demo-db.czvokiourya9.ap-south-1.rds.amazonaws.com:5432/mishrademo ## example: jdbc:postgresql://egov-demo.postgres.database.azure.com:5432/egov_demo
+                domain: mishra-demo.digit.org ## Add your Domain Name    
+                egov-services-fqdn-name: https://mishra-demo.digit.org/ ## Add your Domain Name
                 
                 egov-state-level-tenant-id: "pg" 
                 s3-assets-bucket: "(pg-egov-assets|egov-playground-assets)"
@@ -573,12 +573,12 @@ kafka-v2:
   persistence:
     enabled: true
     aws:
-      - volumeId: "<kafka-v2_volume_id_1>" ## REPLACE: add volume id
-        zone: <zone>     ## REPLACE: add respective zone. 
-      - volumeId: "<kafka-v2_volume_id_2>" ## REPLACE: add volume id
-        zone: <zone> ## REPLACE: add zone
-      - volumeId: "<kafka-v2_volume_id_3>"  ## REPLACE: add volume id
-        zone: <zone> ## REPLACE: add zone
+      - volumeId: "vol-0bbe7808f994a215d" ## REPLACE: add volume id
+        zone: ap-south-1b     ## REPLACE: add respective zone. 
+      - volumeId: "vol-0751c0fd65ca06141" ## REPLACE: add volume id
+        zone: ap-south-1b ## REPLACE: add zone
+      - volumeId: "vol-0c9578167a31ce8e9"  ## REPLACE: add volume id
+        zone: ap-south-1b ## REPLACE: add zone
   zookeeperHosts: "zookeeper-v2.zookeeper-cluster:2181/kafka-v2"
 
   heapOptions: "-Xms704M -Xmx704M"
@@ -608,12 +608,12 @@ zookeeper-v2:
   persistence:
     enabled: true
     aws:
-      - volumeId: "<zookeeper-v2_volume_id_1>" ## REPLACE: add volume id
-        zone: <zone> ## REPLACE: add zone
-      - volumeId: "<zookeeper-v2_volume_id_2>" ## REPLACE: add volume id
-        zone: <zone> ## REPLACE: add zone
-      - volumeId: "<zookeeper-v2_volume_id_3>" ## REPLACE: add volume id
-        zone: <zone> ## REPLACE: add zone
+      - volumeId: "vol-0e7e7e3b60d6990cc" ## REPLACE: add volume id
+        zone: ap-south-1b ## REPLACE: add zone
+      - volumeId: "vol-06d4ade27a18da4ad" ## REPLACE: add volume id
+        zone: ap-south-1b ## REPLACE: add zone
+      - volumeId: "vol-06dd379bb0615fc2f" ## REPLACE: add volume id
+        zone: ap-south-1b ## REPLACE: add zone
 
   ## Zookeeper JVM Heap Option
   heapOptions: "-Xms256M -Xmx256M"
@@ -633,12 +633,12 @@ elasticsearch-data-v1:
   persistence:
     enabled: true
     aws:
-      - volumeId: "<elasticsearch-data_volume_id_1>" ## REPLACE: add volume id
-        zone: <zone> ## REPLACE: add zone
-      - volumeId: "<elasticsearch-data_volume_id_2>" ## REPLACE: add volume id
-        zone: <zone> ## REPLACE: add zone
-      - volumeId: "<elasticsearch-data_volume_id_3>" ## REPLACE: add volume id
-        zone: <zone> ## REPLACE: add zone
+      - volumeId: "vol-0beb494b1f16118db" ## REPLACE: add volume id
+        zone: ap-south-1b ## REPLACE: add zone
+      - volumeId: "vol-08830adecbe34804a" ## REPLACE: add volume id
+        zone: ap-south-1b ## REPLACE: add zone
+      - volumeId: "vol-0e10f13a1087bcb86" ## REPLACE: add volume id
+        zone: ap-south-1b ## REPLACE: add zone
 
   esJavaOpts: "-Xmx1g -Xms1g"
   resources:
@@ -658,12 +658,12 @@ elasticsearch-master-v1:
   persistence:
     enabled: true
     aws:
-      - volumeId: "<elasticsearch-master_volume_id_1>" ## REPLACE: add volume id
-        zone: <zone> ##REPLACE: add zone
-      - volumeId: "<elasticsearch-master_volume_id_2>" ## REPLACE: add volume id
-        zone: <zone> ##REPLACE: add zone
-      - volumeId: "<elasticsearch-master_volume_id_3>" ## REPLACE: add volume id
-        zone: <zone> ## REPLACE: add zone
+      - volumeId: "vol-0b6ce51733e539470" ## REPLACE: add volume id
+        zone: ap-south-1b ##REPLACE: add zone
+      - volumeId: "vol-0f07e765762349be0" ## REPLACE: add volume id
+        zone: ap-south-1b ##REPLACE: add zone
+      - volumeId: "vol-0715ddb779b33d56b" ## REPLACE: add volume id
+        zone: ap-south-1b ## REPLACE: add zone
  
   esJavaOpts: "-Xmx448m -Xms448m"
   resources:
