@@ -35,7 +35,7 @@ jenkins:
     repos: >-
       'git@github.com:egovernments/core-services.git','git@github.com:egovernments/business-services.git'
   deploymentJobs:  # Setup deploymentJobs ACL 
-    - name: mishra   # deployment job name
+    - name: mishra-demo  # deployment job name
       acl: [egovernments*micro-service-dev] # GitHub team name, Members of the team get access to deployment job
     - name: qa
       acl: [egovernments*micro-service-qa] 
