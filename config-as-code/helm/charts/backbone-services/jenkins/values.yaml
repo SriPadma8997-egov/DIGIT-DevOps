@@ -404,7 +404,7 @@ master:
         unclassified:
           globalLibraries:
             libraries:
-            - defaultVersion: "master"
+            - defaultVersion: "padma"
               name: "ci-libs"
               retriever:
                 modernSCM:
