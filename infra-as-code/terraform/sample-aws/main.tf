@@ -108,12 +108,6 @@ resource "aws_iam_role" "eks_iam" {
       }
     ]
   })
-  tags = "${
-    map(
-      "kubernetes.io/cluster/${var.cluster_name}", "owned",
-      "KubernetesCluster", "${var.cluster_name}"
-    )
-  }"
 }
 
 resource "kubernetes_annotations" "example" {
