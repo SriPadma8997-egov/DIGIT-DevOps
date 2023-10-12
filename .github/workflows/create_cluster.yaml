@@ -115,7 +115,7 @@ jobs:
           aws-iam-authenticator version  
       - name: Generate kubeconfig
         run: |
-          aws eks update-kubeconfig --region ${{ secrets.AWS_REGION }} --name k8supgrade
+          aws eks update-kubeconfig --region ${{ secrets.AWS_REGION }} --name githubactions
           cat ~/.kube/config > kubeconfig
       - name: Verify kubectl configuration
         run: kubectl config view 
@@ -179,7 +179,7 @@ jobs:
           aws-iam-authenticator version  
       - name: Generate kubeconfig
         run: |
-          aws eks update-kubeconfig --region ${{ secrets.AWS_REGION }} --name k8supgrade
+          aws eks update-kubeconfig --region ${{ secrets.AWS_REGION }} --name githubactions
           cat ~/.kube/config > kubeconfig
       - name: Verify kubectl configuration
         run: kubectl config view 
@@ -203,7 +203,15 @@ jobs:
         working-directory: config-as-code/environments          
       - name: digit deployment
         run: go run digit_installer.go
-        working-directory: deploy-as-code/deployer     
+        working-directory: deploy-as-code/deployer 
+      - name: Displaying the Loadbalancer ID
+        run: kubectl get svc nginx-ingress-controller -n egov -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'
+        env:
+          AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION:  ${{ secrets.AWS_DEFAULT_REGION }}
+          AWS_REGION:  ${{ secrets.AWS_REGION }} 
+
                    
   # testing githubactions
   # terraform_infra_destruction:
