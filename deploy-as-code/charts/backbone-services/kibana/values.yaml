@@ -61,8 +61,8 @@ protocol: http
 
 serverHost: "0.0.0.0"
 
-healthCheckPath: "/kibana-upgrade/app/kibana"
-serverBasePath: /kibana-upgrade
+healthCheckPath: "/kibana/app/kibana"
+serverBasePath: /kibana
 
 # Allows you to add any config files in /usr/share/kibana/config/
 # such as kibana.yml
@@ -153,13 +153,13 @@ ingress:
     nginx.ingress.kubernetes.io/lua-resty-waf-score-threshold: "10"
     nginx.ingress.kubernetes.io/use-regex: "true"
   hosts:
-    - host: digit-lts.digit.org
+    - host: demo.digit.org
       paths:
-        - path: /kibana-upgrade
+        - path: /kibana
   tls: 
-   - secretName: digit-lts.digit.org-tls-certs
+   - secretName: demo.digit.org-tls-certs
      hosts:
-       - digit-lts.digit.org
+       - demo.digit.org
 
 readinessProbe:
   failureThreshold: 3

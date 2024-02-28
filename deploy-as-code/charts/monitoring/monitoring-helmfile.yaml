@@ -8,7 +8,9 @@ repositories:
 
 values:
   - namespace: monitoring
-  - host: actions.digit.org
+  - ../environments/dev.yaml
+  - ../environments/dev-secrets.yaml
+
 
 
 releases:
@@ -31,15 +33,18 @@ releases:
   - ./values/prometheus.yaml
 
 - name: jaeger-tracing
-  installed: false
+  installed: true
   namespace: {{ .Values.namespace | default "default-namespace" }}
   chart: jaegertracing/jaeger
   version: 1.0.0 
   values:
   - ./values/jaeger.yaml
+  - storage:
+      elasticsearch:
+        password: {{ .Values.secrets.elasticsearch.password }}
   set:
     - name: query.ingress.hosts[0]
-      value: "{{ .Values.host }}"
+      value: "{{ .Values.global.domain }}"
 
 - name: grafana
   installed: true
@@ -50,6 +55,6 @@ releases:
   - ./values/grafana.yaml
   set:
     - name: ingress.hosts[0]
-      value: "{{ .Values.host }}"
+      value: "{{ .Values.global.domain }}"
     - name: ingress.tls[0].hosts[0]
-      value: {{ .Values.host | quote }}
+      value: {{ .Values.global.domain | quote }}

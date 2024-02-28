@@ -3,7 +3,7 @@
 # Jaeger values are grouped by component. Cassandra values override subchart values
 
 provisionDataStore:
-  cassandra: true
+  cassandra: false
   elasticsearch: false
   kafka: false
 
@@ -82,7 +82,7 @@ allInOne:
 
 storage:
   # allowed values (cassandra, elasticsearch)
-  type: cassandra
+  type: elasticsearch
   cassandra:
     host: cassandra
     port: 9042
@@ -117,13 +117,12 @@ storage:
       # cassandra.keyspace: jaeger_v1_test
       # cassandra.tls.enabled: "false"
   elasticsearch:
-    scheme: http
+    scheme: https
     host: elasticsearch-master
     port: 9200
     anonymous: false
     user: elastic
     usePassword: true
-    password: changeme
     # indexPrefix: test
     ## Use existing secret (ignores previous password)
     # existingSecret:
@@ -131,8 +130,8 @@ storage:
     nodesWanOnly: false
     extraEnv: []
     ## ES related env vars to be configured on the concerned components
-    # - name: ES_SERVER_URLS
-    #   value: http://elasticsearch-master:9200
+      # - name: ES_SERVER_URLS
+      #   value: https://elasticsearch-master.backbone:9200
     # - name: ES_USERNAME
     #   value: elastic
     # - name: ES_INDEX_PREFIX
@@ -144,13 +143,13 @@ storage:
       # es.username: elastic
       # es.index-prefix: test
     tls:
-      enabled: false
-      secretName: es-tls-secret
+      enabled: true
+      secretName: elasticsearch-master-certs
       # The mount properties of the secret
-      mountPath: /es-tls/ca-cert.pem
-      subPath: ca-cert.pem
+      mountPath: /usr/share/elasticsearch/config/certs
+      subPath: ca.crt
       # How ES_TLS_CA variable will be set in the various components
-      ca: /es-tls/ca-cert.pem
+      ca: /usr/share/elasticsearch/config/certs
 
   kafka:
     brokers:

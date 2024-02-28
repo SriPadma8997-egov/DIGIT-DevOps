@@ -9,6 +9,7 @@ templates:
 
 values:
   - ../environments/dev-secrets.yaml
+  - ../environments/dev.yaml
 
 releases:
 - name: cert-manager
@@ -70,6 +71,17 @@ releases:
   <<: *default
   values:
     - ./kibana/values.yaml
+    - ingress:
+        hosts:
+          - host: {{ .Values.global.domain }}
+            paths:
+              - path: /kibana
+        tls: 
+          - secretName: {{ .Values.global.domain }}-tls-certs
+            hosts:
+              - {{ .Values.global.domain }}
+
+
 
 - name: kafka-kraft
   installed: true
