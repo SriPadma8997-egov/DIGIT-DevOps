@@ -16,7 +16,7 @@ values:
 releases:
 - name: cert-manager
   chart: jetstack/cert-manager
-  installed: true
+  installed: false
   version: 1.14.3
   wait: true
   namespace: backbone
