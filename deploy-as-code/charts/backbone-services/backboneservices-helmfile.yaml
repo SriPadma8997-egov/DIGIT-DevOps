@@ -14,14 +14,14 @@ values:
 releases:
 - name: cert-manager
   chart: ./cert-manager
-  installed: false
+  installed: true
   version: 0.5.2
   disableValidation: true
   values:
     - ./cert-manager/values.yaml
 
 - name: minio
-  installed: false
+  installed: true
   chart: ./minio
   version: 0.1.0
   <<: *default
@@ -40,7 +40,7 @@ releases:
           auth:
             postgresPassword: {{ .Values.secrets.db.password | quote }}
 - name: redis
-  installed: false
+  installed: true
   chart: ./redis
   version: 3.0.0
   <<: *default
@@ -50,7 +50,6 @@ releases:
 - name: elasticsearch
   chart: ./elasticsearch
   version: 7.6.1
-  installed: false
   <<: *default
   values:
     - ./elasticsearch/values.yaml
@@ -59,7 +58,6 @@ releases:
 
 - name: elasticsearch-data
   chart: ./elasticsearch-data
-  installed: false
   version: 7.6.1
   <<: *default
   values:
@@ -68,7 +66,6 @@ releases:
 - name: kibana
   chart: ./kibana
   version: 1.0.0
-  installed: false
   force: true
   <<: *default
   values:
@@ -86,7 +83,7 @@ releases:
 
 
 - name: kafka-kraft
-  installed: false
+  installed: true
   chart: ./kafka-kraft
   version: 1.0.0
   <<: *default
@@ -106,7 +103,7 @@ releases:
     - domain: {{ .Values.global.domain }}
 
 - name: playground
-  installed: false
+  installed: true
   chart: ./playground
   version: 0.1.0
   <<: *default
