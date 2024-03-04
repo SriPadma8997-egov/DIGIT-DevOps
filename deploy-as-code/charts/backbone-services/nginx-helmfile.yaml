@@ -8,4 +8,4 @@ releases:
   chart: ./ingress-nginx
   version: 1.0.0 # Replace with the version of your chart, if needed
   values:
-    - ./ingress-nginx/values.yaml
+    - ./ingress-nginx/values.yam

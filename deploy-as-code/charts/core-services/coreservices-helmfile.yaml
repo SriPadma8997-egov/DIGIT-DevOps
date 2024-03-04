@@ -22,6 +22,8 @@ releases:
 
   - name: egov-enc-service # Replace with your desired namespace
     installed: true
+    needs:
+    - egov-mdms-service
     <<: *default
 
   - name: egov-filestore # Replace with your desired namespace
@@ -46,6 +48,8 @@ releases:
 
   - name: egov-hrms # Replace with your desired namespace
     installed: true
+    needs:
+    - egov-user
     <<: *default
 
   - name: egov-indexer # Replace with your desired namespace
@@ -62,6 +66,8 @@ releases:
 
   - name: egov-user # Replace with your desired namespace
     installed: true
+    needs:
+    - egov-enc-service
     <<: *default
 
   - name: egov-otp # Replace with your desired namespace
@@ -78,6 +84,8 @@ releases:
 
   - name: egov-workflow-v2 # Replace with your desired namespace
     installed: true
+    needs:
+    - egov-mdms-service
     <<: *default
 
   - name: user-otp # Replace with your desired namespace
